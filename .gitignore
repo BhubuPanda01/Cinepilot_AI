@@ -1,0 +1,29 @@
+# Secrets -- never commit. The submission repo is public.
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Local runtime artifacts
+backend/uploads/
+backend/output/
+backend/output_images/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+frontend/.env*
+
+# Editor / OS / local tooling
+.vscode/
+.idea/
+.claude/
+.DS_Store
+Thumbs.db

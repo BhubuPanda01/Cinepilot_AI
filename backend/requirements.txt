@@ -1,0 +1,10 @@
+google-adk
+python-dotenv
+pypdf
+firebase-admin
+google-cloud-storage
+reportlab
+parallel-web
+fastapi
+uvicorn
+python-multipart

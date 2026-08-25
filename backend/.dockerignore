@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+uploads/
+output/
+output_images/
+*.pdf
+.env
+.env.*
