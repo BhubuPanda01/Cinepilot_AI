@@ -161,14 +161,23 @@ The service account needs `roles/aiplatform.user`, `roles/datastore.user`,
 
 **Frontend → Firebase Hosting**
 
+Pass the API URL inline rather than relying on `.env.production`: Next.js gives
+`.env.local` higher precedence, so a developer's local file would otherwise silently
+override the production URL and ship a build that calls `localhost`.
+
 ```bash
 cd frontend
-npm run build
+NEXT_PUBLIC_API_BASE=https://YOUR-CLOUD-RUN-URL npm run build
+cd ..
 firebase deploy --only hosting
 ```
 
-Add the resulting domain to **Firebase Console → Authentication → Settings → Authorized
-domains**, and pass it to the backend via `ALLOWED_ORIGINS`.
+Then pass the hosting domain to the backend so CORS accepts it:
+
+```bash
+gcloud run services update cinepilot-backend --region=us-central1 \
+  --update-env-vars="^@^ALLOWED_ORIGINS=https://YOUR-SITE.web.app"
+```
 
 ---
 
@@ -204,3 +213,10 @@ frontend/
 ## License
 
 [MIT](LICENSE)
+
+---
+
+## Live deployment
+
+- **App:** https://cinepilotai.web.app
+- **API:** https://cinepilot-backend-697076662578.us-central1.run.app

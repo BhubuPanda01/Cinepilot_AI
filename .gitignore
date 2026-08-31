@@ -21,6 +21,9 @@ node_modules/
 out/
 frontend/.env*
 
+# Firebase CLI local cache
+.firebase/
+
 # Editor / OS / local tooling
 .vscode/
 .idea/
