@@ -51,8 +51,10 @@ def projects_collection(uid: str):
     return db.collection("users").document(uid).collection("projects")
 
 
-@app.get("/healthz")
-def healthz():
+# Not "/healthz": Google's frontend reserves that path and intercepts it before
+# the request reaches the container, so it can never be used as a health check here.
+@app.get("/api/health")
+def health():
     return {"status": "ok"}
 
 
